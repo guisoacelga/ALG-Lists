@@ -18,25 +18,25 @@ public class TodoLinkedList {
     // *** Operationen ***
 
     public void appendTodoText(String todoText) {
-        // Neuer Knoten erzeugt
+        // New node created
         Node newNode = new Node(todoText);
 
-        // Liste ist noch leer
+        // List is still empty
         if (first == null) {
             first = newNode;
             last = newNode;
         }
-        // Liste ist nicht leer
+        // List is not empty
         else {
-            // Der bisher letzte Knoten zeigt nun auf den neuen Knoten
+            // The previous node now points to the new node
             last.setNext(newNode);
-            // Last muss neu gesetzt werden und zwar auf den neuen Knoten am Ende
+            // Last must be set again on the new node at the end
             last = newNode;
         }
     }
 
     public void deleteLastTodoText() {
-        // Nichts machen
+        // Do nothing
         if (first == null)
             return;
 
@@ -45,7 +45,7 @@ public class TodoLinkedList {
             first = null;
             last = null;
         } else {
-            // Vorgänger von last finden
+            // If first = last, then there is only one element
             Node prevNode = first;
 
             while (prevNode.getNext() != last)
@@ -57,46 +57,46 @@ public class TodoLinkedList {
     }
 
     public String getTodoTextAtIndex(int index) {
-        int counter = 0;    // Info: counter/index startet bei 0 (nicht 1)
+        int counter = 0;    // Info: counter / index starts at 0 (not 1)
         Node currentNode = first;
 
-        // Schleife, bis man an der gewünschten Stelle in der verlinkten Liste ist
-        // Achtung: Index könnte auch ungültig (z.B. größer als die Anzahl an Elementen in der Liste) sein
+        // Loop until you are at the desired position in the linked list
+        // Attention: The index could also be invalid (e.g. larger than the number of elements in the list)
         while (counter != index && currentNode != null) {
             currentNode = currentNode.getNext();
             counter++;
         }
 
-        // Es könnte sein, dass man nichts gefunden hat. Dann null zurückliefern.
+        // It could be that nothing was found. Then return zero.
         if (currentNode == null)
             return null;
         else
             return currentNode.getTodoText();
     }
 
-    // Fortgeschrittene Methode, wo man an einer bestimmten Stelle löschen kann
+    // Advanced method where you can delete at a certain point
     public void deleteTodoTextAtIndex(int index) {
         int counter = 0;
         Node currentNode = first;
         Node prevNode = null;
 
-        // Vorgängerknoten von Knoten an der Position index suchen
+        // Find previous nodes of nodes at position index
         while (counter < index && currentNode != null) {
             counter++;
             prevNode = currentNode;
             currentNode = currentNode.getNext();
         }
 
-        // Knoten nicht gefunden
+        // Node not found
         if (currentNode == null)
             return;
 
-        // Erster Knoten soll gelöscht werden
+        // The first node is to be deleted
         if (currentNode == first) {
             first = currentNode.getNext();
         }
 
-        // Letzter Knoten soll gelöscht werden
+        // The last node is to be deleted
         if (currentNode == last) {
             last = prevNode;
         }

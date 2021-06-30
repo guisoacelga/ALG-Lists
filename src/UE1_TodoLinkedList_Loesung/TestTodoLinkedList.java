@@ -16,26 +16,26 @@ public class TestTodoLinkedList {
     public static void main(String[] args) {
         TodoLinkedList todoLinkedList = new TodoLinkedList();
 
-        // *** Neue Elemente hinzufügen ***
+        // *** Add new elements ***
         todoLinkedList.appendTodoText("Müll rausbringen");
         todoLinkedList.appendTodoText("Für ALD lernen");
         todoLinkedList.appendTodoText("Urlaub planen");
         todoLinkedList.appendTodoText("Steuerausgleich machen");
         printLinkedList(todoLinkedList);
 
-        // *** Was ist auf der 5? ***
+        // *** What's on the 5? ***
         int position = 4;
         System.out.println("Auf Position " + position + " ist: " + todoLinkedList.getTodoTextAtIndex(position));
 
-        // *** Was ist auf der 2? ***
+        // *** What's on the 2? ***
         position = 1;
         System.out.println("Auf Position " + position + " ist: " + todoLinkedList.getTodoTextAtIndex(position));
 
-        // *** Das letzte Element löschen
+        // *** Delete the last item
         todoLinkedList.deleteLastTodoText();
         printLinkedList(todoLinkedList);
 
-        // *** Noch mehr löschen
+        // *** Delete even more
         todoLinkedList.deleteLastTodoText();
         todoLinkedList.deleteLastTodoText();
         todoLinkedList.deleteLastTodoText();
